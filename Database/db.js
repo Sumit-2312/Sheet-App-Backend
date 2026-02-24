@@ -1,6 +1,5 @@
 import mongoose, { model } from "mongoose";
 import { Schema } from "mongoose";
-const objectId = Schema.ObjectId;
 
 
 const UserSchema = new Schema({
@@ -17,14 +16,35 @@ const UserSchema = new Schema({
     password: {
         type: String,
         required: true
+    },
+    isVerified:{
+        type: Boolean,
+        required: true
     }
 });
 
 
+const UserOtpSchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
+  otp: {
+    type: Number,
+    required: true,
+  },
+  expiry: {
+    type: Date,
+    required: true,
+  },
+});
+
 
 const Users = model('users',UserSchema);
-
+const OTP = model('otp',UserOtpSchema);
 
 export {
-    Users
+    Users,
+    OTP
 }
