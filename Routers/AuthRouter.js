@@ -1,6 +1,7 @@
 import express  from 'express';
 import bcrypt from 'bcrypt'
 import dotenv from 'dotenv'
+import jwt from 'jsonwebtoken'
 dotenv.config();
 import { loginSchema, signupSchema } from '../zodSchemas/AuthSchema.js';
 import { OTP, Users } from '../Database/db.js';
@@ -210,8 +211,16 @@ const SigninHandler = async(req,res)=>{
                 message: "Incorrect password"
             });
         }
+
+        // after the password is matched , generate the token using jwt and send back to the user on frontend
+
+        const token = jwt.sign({
+            email : email
+        },process.env.JWT_SECRET);
+
         return res.status(200).json({
-            message: "You have successfully signed in"
+            message: "You have successfully signed in",
+            token : token
         });
     }catch(err){
         console.log("Error in catch block");
