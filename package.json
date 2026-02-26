@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "concurrently \"nodemon wsIndex.js\" \"nodemon httpIndex.js\""  
   },
   "keywords": [],
   "author": "",
@@ -12,6 +12,7 @@
   "type": "module",
   "dependencies": {
     "bcrypt": "^6.0.0",
+    "concurrently": "^9.2.1",
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",
     "express": "^5.2.1",
@@ -19,6 +20,7 @@
     "mongoose": "^9.2.1",
     "nodemailer": "^8.0.1",
     "nodemon": "^3.1.14",
+    "ws": "^8.19.0",
     "zod": "^4.3.6"
   }
 }
