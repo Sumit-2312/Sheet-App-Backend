@@ -1,0 +1,33 @@
+Email functionality
+- Use nodemailer with sendGrid 
+What does transporte.sendMail return -> promise
+  {
+    accepted: ['user@example.com'],
+    rejected: [],
+    envelopeTime: 123,
+    messageTime: 456,
+    messageSize: 789,
+    response: '250 OK',
+    envelope: {
+      from: 'you@example.com',
+      to: ['user@example.com']
+    },
+    messageId: '<random-id@example.com>'
+  }
+  info.accepted.length > 0  // means success
+
+
+
+
+  ----------------------------------------------------------------------------------------------
+
+  Both http and ws in same folder sharing the database
+   how to start both the server -> using concurrently --> "dev": "concurrently \"nodemon wsIndex.js\" \"nodemon httpIndex.js\""  
+   or if want to run seprately
+    make two different terminal instances
+      run node/nodemon httpIndex.js in first instance
+      run node/nodemon wsIndex.js in second instance
+    - if nodemon is not present globally can use (npx nodemon httpIndex.js)
+    - or can install nodemon globally by ( npm i -g nodemon )
+
+----------------------------------------------------------------------------------------------
